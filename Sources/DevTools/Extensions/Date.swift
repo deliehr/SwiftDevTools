@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Date {
+public extension Date {
     var beginOfDay: Date? {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .day], from: self)

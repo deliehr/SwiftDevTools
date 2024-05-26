@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Throttler {
+public class Throttler {
     private let queue: DispatchQueue
     private let interval: TimeInterval
     private var job: (() -> Void)?

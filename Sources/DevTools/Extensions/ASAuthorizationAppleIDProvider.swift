@@ -7,7 +7,7 @@
 
 import AuthenticationServices
 
-extension ASAuthorizationAppleIDProvider {
+public extension ASAuthorizationAppleIDProvider {
     func getCredentialState(forUserID userID: String) async throws -> ASAuthorizationAppleIDProvider.CredentialState {
         try await withCheckedThrowingContinuation { continuation in
             getCredentialState(forUserID: userID) { state, error in

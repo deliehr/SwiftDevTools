@@ -14,20 +14,20 @@ let package = Package(
             name: "DevTools",
             targets: ["DevTools"]),
     ],
-    dependencies: [
-        .package(url: "https://github.com/realm/SwiftLint", .upToNextMajor(from: .init(0, 0, 0)))
-    ],
+//    dependencies: [
+//        .package(url: "https://github.com/realm/SwiftLint", .upToNextMajor(from: .init(0, 0, 0)))
+//    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
-        .target(name: "DevTools", dependencies: [
-            .product(name: "swiftlint", package: "SwiftLint"),
-            .product(name: "SwiftLintFramework", package: "SwiftLint"),
-            .product(name: "SwiftLintBuildToolPlugin", package: "SwiftLint"),
-            .product(name: "SwiftLintCommandPlugin", package: "SwiftLint")
-        ]),
+        .target(
+            name: "DevTools"
+//            plugins: [
+//                .plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLint")
+//            ]
+        ),
         .testTarget(
             name: "DevToolsTests",
-            dependencies: ["DevTools"]),
+            dependencies: ["DevTools"])
     ]
 )
