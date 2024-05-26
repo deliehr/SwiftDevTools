@@ -7,8 +7,8 @@
 
 import Foundation
 
-public public extension Int64 {
+public extension Int64 {
     func asDateString(_ format: String) -> String {
-        Date(timeIntervalSince1970: TimeInterval(self/1000)).asString(format)
+        Date(timeIntervalSince1970: TimeInterval(self)).asString(format)
     }
 }
