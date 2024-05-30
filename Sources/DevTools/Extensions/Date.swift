@@ -14,6 +14,17 @@ public extension Date {
         return calendar.date(from: components)
     }
 
+    var endOfDay: Date? {
+        let calendar = Calendar.current
+
+        var components = calendar.dateComponents([.year, .month, .day], from: self)
+        components.hour = 23
+        components.minute = 59
+        components.second = 59
+
+        return calendar.date(from: components)
+    }
+
     func dateComponents(from fromComponents: Set<Calendar.Component>) -> DateComponents {
         Calendar.current.dateComponents(fromComponents, from: self)
     }
