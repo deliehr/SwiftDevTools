@@ -8,27 +8,29 @@
 import Foundation
 import Network
 
-public final class NetworkMonitor: ObservableObject {
-    @Published private(set) var isConnected = false
-    @Published private(set) var isCellular = false
+@available(iOS 17, *)
+@Observable
+public final class NetworkMonitor {
+    public var isConnected = false
+    public var isCellular = false
 
     private let nwMonitor = NWPathMonitor()
     private let workerQueue = DispatchQueue.global()
 
-    static var shared = NetworkMonitor()
+    public static var shared = NetworkMonitor()
 
-    func start() {
-        nwMonitor.start(queue: workerQueue)
-
+    public func start() {
         nwMonitor.pathUpdateHandler = { [weak self] path in
             DispatchQueue.main.async {
                 self?.isConnected = path.status == .satisfied
                 self?.isCellular = path.usesInterfaceType(.cellular)
             }
         }
+
+        nwMonitor.start(queue: workerQueue)
     }
 
-    func stop() {
+    public func stop() {
         nwMonitor.cancel()
     }
 }
