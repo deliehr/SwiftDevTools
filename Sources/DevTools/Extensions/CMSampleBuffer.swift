@@ -9,7 +9,7 @@ import Foundation
 import AVFoundation
 import UIKit
 
-extension CMSampleBuffer {
+public extension CMSampleBuffer {
     var uiImage: UIImage? {
         guard let imageBuffer = CMSampleBufferGetImageBuffer(self) else { return nil }
 
