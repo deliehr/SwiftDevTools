@@ -5,6 +5,8 @@
 //  Created by Dominik Liehr on 18.06.24.
 //
 
+#if os(iOS)
+
 import Foundation
 import UIKit
 
@@ -19,3 +21,5 @@ extension UIWindow {
         return nil
     }
 }
+
+#endif

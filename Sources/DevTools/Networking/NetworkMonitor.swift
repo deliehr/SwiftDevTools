@@ -8,7 +8,7 @@
 import Foundation
 import Network
 
-@available(iOS 17, *)
+@available(iOS 17, OSX 14, *)
 @Observable
 public final class NetworkMonitor {
     public var isConnected = false

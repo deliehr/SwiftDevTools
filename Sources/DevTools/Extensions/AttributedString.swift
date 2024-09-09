@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-@available(iOS 15, *)
+#if os(iOS)
+
+@available(iOS 15, OSX 12, *)
 extension AttributedString {
     static func build(with text: String, boldText: String, font: Font?, uiFont: UIFont?) -> AttributedString {
         let attributedString = NSMutableAttributedString(string: text)
@@ -24,3 +26,5 @@ extension AttributedString {
         return AttributedString(attributedString)
     }
 }
+
+#endif

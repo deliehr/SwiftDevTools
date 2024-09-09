@@ -5,6 +5,8 @@
 //  Created by Dominik Liehr on 29.07.24.
 //
 
+#if os(iOS)
+
 import UIKit
 import AVFoundation
 
@@ -47,3 +49,5 @@ extension UIImage {
         return UIImage()
     }
 }
+
+#endif

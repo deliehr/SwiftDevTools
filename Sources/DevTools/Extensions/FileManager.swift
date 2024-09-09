@@ -7,6 +7,7 @@
 
 import Foundation
 
+@available(OSX 13, *)
 public extension FileManager {
     func fileExists(atPath path: String, isDirectory: Bool) -> Bool {
         var fileIsDirectory: ObjCBool = ObjCBool(isDirectory)

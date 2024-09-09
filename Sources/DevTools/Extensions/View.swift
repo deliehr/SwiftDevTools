@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(OSX 10.15, *)
 public extension View {
     func eraseToAnyView() -> AnyView {
         AnyView(self)

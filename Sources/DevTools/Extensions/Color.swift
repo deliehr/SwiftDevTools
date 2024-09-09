@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(OSX 10.15, *)
 public extension Color {
     init(hex: String, alpha: Double = 1.0) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
