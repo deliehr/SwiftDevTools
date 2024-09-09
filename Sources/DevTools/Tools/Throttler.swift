@@ -14,12 +14,12 @@ public class Throttler {
     private var previousRun: Date?
     private var workItem: DispatchWorkItem?
 
-    init(seconds: TimeInterval, queue: DispatchQueue = DispatchQueue.main) {
+    public init(seconds: TimeInterval, queue: DispatchQueue = DispatchQueue.main) {
         self.interval = seconds
         self.queue = queue
     }
 
-    func throttle(_ block: @escaping () -> Void) {
+    public func throttle(_ block: @escaping () -> Void) {
         job = block
         workItem?.cancel()
         workItem = DispatchWorkItem { [weak self] in
