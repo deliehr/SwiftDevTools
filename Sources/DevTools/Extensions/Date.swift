@@ -33,9 +33,10 @@ public extension Date {
         Calendar.current.dateComponents([.day], from: from, to: self).day ?? 0
     }
 
-    func asString(_ format: String) -> String {
+    func asString(_ format: String, timeZone: TimeZone = .current) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = format
+        formatter.timeZone = timeZone
 
         return formatter.string(from: self)
     }
