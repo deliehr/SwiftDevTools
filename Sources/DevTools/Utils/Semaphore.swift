@@ -8,15 +8,15 @@
 import Foundation
 
 @available(OSX 10.15, *)
-actor Semaphore {
+public actor Semaphore {
     private var count: Int
     private var waiters: [CheckedContinuation<Void, Never>] = []
     
-    init(count: Int = 0) {
+    public init(count: Int = 0) {
         self.count = count
     }
     
-    func wait() async {
+    public func wait() async {
         count -= 1
         if count >= 0 { return }
         await withCheckedContinuation {
@@ -24,7 +24,7 @@ actor Semaphore {
         }
     }
     
-    func release(count: Int = 1) {
+    public func release(count: Int = 1) {
         assert(count >= 1)
         self.count += count
         for _ in 0..<count {
