@@ -7,10 +7,10 @@
 
 import Foundation
 
-class DataOutputStream {
+public class DataOutputStream {
     let outputStream: OutputStream
     
-    init?(url: URL) {
+    public init?(url: URL) {
         if let stream = OutputStream(url: url, append: false) {
             outputStream = stream
         } else {
@@ -18,15 +18,15 @@ class DataOutputStream {
         }
     }
     
-    func open() {
+    public func open() {
         outputStream.open()
     }
     
-    func close() {
+    public func close() {
         outputStream.close()
     }
     
-    func append(data: Data) {
+    public func append(data: Data) {
         var length = UInt32(data.count).bigEndian
         
         withUnsafeBytes(of: &length) { lengthBuffer in

@@ -7,10 +7,10 @@
 
 import Foundation
 
-class DataInputStream {
+public class DataInputStream {
     private let inputStream: InputStream
     
-    init?(url: URL) {
+    public init?(url: URL) {
         if let stream = InputStream(url: url) {
             self.inputStream = stream
         } else {
@@ -18,15 +18,15 @@ class DataInputStream {
         }
     }
     
-    func open() {
+    public func open() {
         inputStream.open()
     }
     
-    func close() {
+    public func close() {
         inputStream.close()
     }
     
-    func readAll() -> [Data] {
+    public func readAll() -> [Data] {
         var blocks = [Data]()
         
         while true {
@@ -88,7 +88,7 @@ class DataInputStream {
         return blocks
     }
     
-    func read(completion: @escaping (Data)->Void) {
+    public func read(completion: @escaping (Data)->Void) {
         while true {
             // read length
             var lengthBuffer = [UInt8](repeating: 0, count: MemoryLayout<UInt32>.size)
@@ -146,7 +146,7 @@ class DataInputStream {
         }
     }
     
-    func read() -> AsyncStream<Data> {
+    public func read() -> AsyncStream<Data> {
         return AsyncStream { continuation in
             while true {
                 // read length

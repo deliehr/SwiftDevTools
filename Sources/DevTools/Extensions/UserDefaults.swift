@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension UserDefaults {
+public extension UserDefaults {
     func keyExists(_ key: String) -> Bool {
         self.dictionaryRepresentation().keys.contains("key")
     }
