@@ -69,9 +69,9 @@ final class NetworkMonitor {
     }
     
     public func start() {
-        networkMonitor.start(queue: workerQueue)
         isConnectedPub = PassthroughSubject<Bool,Never>()
         usedInterfacePub = PassthroughSubject<NWInterface.InterfaceType,Never>()
+        networkMonitor.start(queue: workerQueue)
     }
     
     public func stop() {
