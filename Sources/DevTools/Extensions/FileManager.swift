@@ -33,6 +33,24 @@ public extension FileManager {
 
         return bytes
     }
+    
+    func directorySize(at url: URL) throws -> UInt64? {
+        let fileManager = FileManager.default
+        
+        guard let enumerator = fileManager.enumerator(at: url, includingPropertiesForKeys: [.fileSizeKey], options: [], errorHandler: nil) else { return nil }
+
+        var totalSize: UInt64 = 0
+        
+        for case let fileURL as URL in enumerator {
+            let resourceValues = try fileURL.resourceValues(forKeys: [.fileSizeKey])
+            
+            guard let fileSize = resourceValues.fileSize else { continue }
+            
+            totalSize += UInt64(fileSize)
+        }
+
+        return totalSize
+    }
 }
 
 enum FileMethodError: Error {
