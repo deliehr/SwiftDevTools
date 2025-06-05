@@ -9,6 +9,10 @@ import Foundation
 
 public extension UserDefaults {
     func keyExists(_ key: String) -> Bool {
-        self.dictionaryRepresentation().keys.contains("key")
+        let keys = self.dictionaryRepresentation().keys
+        
+        let existing = keys.contains(key)
+        
+        return existing
     }
 }
