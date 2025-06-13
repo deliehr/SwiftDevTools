@@ -13,12 +13,12 @@ import SwiftUI
 @available(iOS 17, OSX 14, *)
 @MainActor
 @Observable
-final class NetworkMonitor {
+public final class NetworkMonitor {
     private let networkMonitor = NWPathMonitor()
     private let workerQueue = DispatchQueue(label: "NetworkMonitor", qos: .userInitiated)
     
-    var isConnected: Bool? = nil
-    var usedInterface: NWInterface.InterfaceType? = nil
+    public var isConnected: Bool? = nil
+    public var usedInterface: NWInterface.InterfaceType? = nil
     
     @ObservationIgnored
     public private(set) var isConnectedPub = PassthroughSubject<Bool,Never>()
@@ -26,7 +26,7 @@ final class NetworkMonitor {
     @ObservationIgnored
     public private(set) var usedInterfacePub = PassthroughSubject<NWInterface.InterfaceType,Never>()
     
-    static let shared = NetworkMonitor()
+    public static let shared = NetworkMonitor()
     
     private init() {
         networkMonitor.pathUpdateHandler = { path in
@@ -54,14 +54,14 @@ final class NetworkMonitor {
         networkMonitor.start(queue: workerQueue)
     }
     
-    func updateConnectedIfNecessary(_ connected: Bool) {
+    private func updateConnectedIfNecessary(_ connected: Bool) {
         guard self.isConnected != connected else { return }
         
         self.isConnected = connected
         isConnectedPub.send(connected)
     }
     
-    func updateUsedInterfaceIfNecessary(_ interface: NWInterface.InterfaceType) {
+    private func updateUsedInterfaceIfNecessary(_ interface: NWInterface.InterfaceType) {
         guard self.usedInterface != interface else { return }
         
         self.usedInterface = interface
