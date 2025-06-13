@@ -21,10 +21,10 @@ final class NetworkMonitor {
     var usedInterface: NWInterface.InterfaceType? = nil
     
     @ObservationIgnored
-    var isConnectedPub = PassthroughSubject<Bool,Never>()
+    public private(set) var isConnectedPub = PassthroughSubject<Bool,Never>()
     
     @ObservationIgnored
-    var usedInterfacePub = PassthroughSubject<NWInterface.InterfaceType,Never>()
+    public private(set) var usedInterfacePub = PassthroughSubject<NWInterface.InterfaceType,Never>()
     
     static let shared = NetworkMonitor()
     
@@ -40,7 +40,7 @@ final class NetworkMonitor {
                 let usesEthernet = path.usesInterfaceType(.wiredEthernet)
                 
                 if usesCellular {
-                    await self.updateUsedInterfaceIfNecessary(.wiredEthernet)
+                    await self.updateUsedInterfaceIfNecessary(.cellular)
                 } else if usesWifi {
                     await self.updateUsedInterfaceIfNecessary(.wifi)
                 } else if usesEthernet {
