@@ -13,4 +13,12 @@ public extension Data {
 
         append(data)
     }
+    
+    /// Use in consunction with application(_:didRegisterForRemoteNotificationsWithDeviceToken:)
+    var deviceTokenString: String {
+        let tokenParts = map { String(format: "%02.2hhx", $0) }
+        let token = tokenParts.joined()
+        
+        return token
+    }
 }
